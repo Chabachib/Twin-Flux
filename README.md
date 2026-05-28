@@ -29,7 +29,7 @@ The starting point was simple: I wanted to use [ABRP (A Better Route Planner)](h
 
 So I did. I found the DEVRT dataset — real Nissan Leaf trips with ground-truth GPS, speed, and SoC measurements — and used it as the foundation. I built a physics engine from scratch (drag, rolling resistance, grade, regen, temperature derating), ran it against all 29 trips, tuned the calibration, and compared the predictions against ABRP's output for the same routes. The results were very close enough to validate the approach.
 
-From there I scaled: I added four more vehicles (Tesla Model 3, BMW iX3, Mercedes CLA EQ, VolksWagen ID. Polo), extracted their physics constants from [Electric Vehicle Database](ev-database.org), calibrated each one, and tested them across a wide range of routes. The physics held.
+From there I scaled: I added four more vehicles (Tesla Model 3, BMW iX3, Mercedes CLA EQ, VolksWagen ID. Polo), extracted their physics constants from [Electric Vehicle Database](https://ev-database.org), calibrated each one, and tested them across a wide range of routes. The physics held.
 
 But real EV data is scarce. You can't find large labeled datasets of real trips for a specific vehicle freely available. So the next logical step was to generate my own — using SUMO traffic simulation to produce synthetic driving cycles, feeding them through the physics engine to produce labeled data, and studying how each vehicle would perform under different conditions. The goal is to close the sim-to-real gap: generate enough synthetic data to train and validate models, then, once real telemetry becomes available from actual hardware, compare and refine.
 
